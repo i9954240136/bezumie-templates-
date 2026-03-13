@@ -13,7 +13,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════════════
-           CSS — СТИЛЬ МИНИМАЛИЗМ v2 (FIXED)
+           CSS — СТИЛЬ МИНИМАЛИЗМ v2 (FINAL FIXED)
            ═══════════════════════════════════════════════════════════════ */
 
         :root {
@@ -172,7 +172,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            aspect-ratio: 4/3;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -222,30 +222,24 @@
 
         /* ADVANTAGES */
         .advantages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-@media (min-width: 768px) {
-    .advantages-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
+        @media (max-width: 1024px) {
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media (max-width: 767px) {
-    .advantages-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .advantages-grid {
-        grid-template-columns: 1fr;
-    }
-}
+        @media (max-width: 480px) {
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .advantage-card {
             text-align: center;
@@ -428,10 +422,6 @@
             .about-images {
                 grid-template-columns: 1fr;
             }
-
-            .advantages-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -528,7 +518,7 @@
             <h2 class="section-title">Преимущества</h2>
             <div class="advantages-grid">
                 <!-- ════════════════════════════════════════════════════
-                     ЗАМЕНИТЬ: Карточки преимуществ (4 штуки, сетка 2x2)
+                     ЗАМЕНИТЬ: Карточки преимуществ (4 штуки)
                      ════════════════════════════════════════════════════ -->
                 <div class="advantage-card">
                     <svg class="advantage-icon" viewBox="0 0 24 24">
