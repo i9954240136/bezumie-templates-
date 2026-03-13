@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ═══════════════════════════════════════════════════════════════
+         ЗАМЕНИТЬ ДЛЯ КАЖДОГО КЛИЕНТА:
+        ═══════════════════════════════════════════════════════════════ -->
+    <title>Название Компании — Услуги/Товары</title>
+    <meta name="description" content="Краткое описание компании (150-160 символов)">
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Favicon (опционально) -->
+    <link rel="icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           CSS — СТИЛЬ МИНИМАЛИЗМ
+           Не менять без необходимости
+           ═══════════════════════════════════════════════════════════════ */
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-primary: #000000;
+            --accent-secondary: #444444;
+            --border-color: #e5e5e5;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-secondary);
+            color: #ffffff;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--accent-primary);
+        }
+
+        /* ABOUT */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* SERVICES */
+        .services {
+            background: var(--bg-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 15px;
+            color: var(--accent-primary);
+        }
+
+        /* ADVANTAGES */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-primary);
+        }
+
+        .advantage-card p {
+            color: var(--text-secondary);
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .contact-info strong {
+            color: var(--text-primary);
+        }
+
+        .contact-form {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .form-success {
+            color: #16a34a;
+            margin-top: 15px;
+            font-weight: 600;
+            display: none;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <!-- ════════════════════════════════════════════════════════
+                 ЗАМЕНИТЬ: Название компании
+                 ════════════════════════════════════════════════════════ -->
+            <div class="logo">Название Компании</div>
+            <!-- ════════════════════════════════════════════════════════ -->
+            
+            <nav class="nav">
+                <a href="#about">О нас</a>
+                <a href="#services">Услуги</a>
+                <a href="#advantages">Преимущества</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <!-- ════════════════════════════════════════════════════════
+                 ЗАМЕНИТЬ: Заголовок и подзаголовок
+                 ════════════════════════════════════════════════════════ -->
+            <h1 class="hero-title">Качественные услуги для вашего бизнеса</h1>
+            <p class="hero-subtitle">Работаем с 2020 года. Гарантия качества. Быстрые сроки.</p>
+            <a href="#contact" class="btn">Заказать услугу →</a>
+            <!-- ════════════════════════════════════════════════════════ -->
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <!-- ════════════════════════════════════════════════════════
+                 ЗАМЕНИТЬ: Текст о компании
+                 ════════════════════════════════════════════════════════ -->
+            <div class="about-content">
+                <p>Мы — команда профессионалов с многолетним опытом работы. 
+                Наша миссия — предоставлять качественные услуги по доступным ценам. 
+                Мы ценим каждого клиента и гарантируем индивидуальный подход.</p>
+            </div>
+            <!-- ════════════════════════════════════════════════════════ -->
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Услуги</h2>
+            <div class="services-grid">
+                <!-- ════════════════════════════════════════════════════
+                     ЗАМЕНИТЬ: Карточки услуг (можно копировать блоки)
+                     ════════════════════════════════════════════════════ -->
+                <div class="service-card">
+                    <h3>Услуга 1</h3>
+                    <p>Описание услуги. Что входит, сроки, особенности.</p>
+                    <div class="service-price">от 5 000 ₽</div>
+                </div>
+
+                <div class="service-card">
+                    <h3>Услуга 2</h3>
+                    <p>Описание услуги. Что входит, сроки, особенности.</p>
+                    <div class="service-price">от 7 000 ₽</div>
+                </div>
+
+                <div class="service-card">
+                    <h3>Услуга 3</h3>
+                    <p>Описание услуги. Что входит, сроки, особенности.</p>
+                    <div class="service-price">от 10 000 ₽</div>
+                </div>
+                <!-- ════════════════════════════════════════════════════ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section id="advantages">
+        <div class="container">
+            <h2 class="section-title">Преимущества</h2>
+            <div class="advantages-grid">
+                <!-- ════════════════════════════════════════════════════
+                     ЗАМЕНИТЬ: Карточки преимуществ
+                     ════════════════════════════════════════════════════ -->
+                <div class="advantage-card">
+                    <div class="advantage-icon">⏱</div>
+                    <h3>Быстро</h3>
+                    <p>Сроки от 1 дня</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">💰</div>
+                    <h3>Недорого</h3>
+                    <p>Честные цены</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">✓</div>
+                    <h3>Качественно</h3>
+                    <p>Гарантия результата</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🤝</div>
+                    <h3>Надёжно</h3>
+                    <p>Работаем по договору</p>
+                </div>
+                <!-- ════════════════════════════════════════════════════ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <!-- ════════════════════════════════════════════════════
+                     ЗАМЕНИТЬ: Контактная информация
+                     ════════════════════════════════════════════════════ -->
+                <div class="contact-info">
+                    <p><strong>Телефон:</strong> <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@company.ru">info@company.ru</a></p>
+                    <p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p>
+                    <p><strong>Режим работы:</strong> Пн-Пт: 9:00 - 18:00</p>
+                </div>
+                <!-- ════════════════════════════════════════════════════ -->
+
+                <!-- ════════════════════════════════════════════════════
+                     ЗАМЕНИТЬ: Formspree ID (получить на formspree.io)
+                     ════════════════════════════════════════════════════ -->
+                <form class="contact-form" action="https://formspree.io/f/ТВОЙ_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Как с вами связаться?</label>
+                        <input type="text" id="contact" name="contact" placeholder="Телефон / Telegram / Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                    <p class="form-success">Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>
+                </form>
+                <!-- ════════════════════════════════════════════════════ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <!-- ════════════════════════════════════════════════════════
+                 ЗАМЕНИТЬ: Год и название компании
+                 ════════════════════════════════════════════════════════ -->
+            <p>© 2026 Название Компании. Все права защищены.</p>
+            <!-- ════════════════════════════════════════════════════════ -->
+        </div>
+    </footer>
+
+    <!-- FORM SUCCESS SCRIPT -->
+    <script>
+        // Показ сообщения об успешной отправке
+        const form = document.querySelector('.contact-form');
+        const formSuccess = document.querySelector('.form-success');
+
+        form.addEventListener('submit', () => {
+            formSuccess.style.display = 'block';
+            setTimeout(() => {
+                formSuccess.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
